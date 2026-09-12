@@ -1,0 +1,132 @@
+{
+  "created_at_utc": "2026-09-12T16:46:25.770109+00:00",
+  "config": {
+    "profile": "quick",
+    "seed": 42,
+    "n_samples": 72,
+    "test_size": 0.3,
+    "noise": 0.16,
+    "n_qubits": 2,
+    "feature_map_reps": 2,
+    "feature_map_scale": 0.5,
+    "shots": 512,
+    "noise_repeats": 3,
+    "noise_levels": [
+      0.0,
+      0.02,
+      0.05,
+      0.1
+    ],
+    "vqc_layers": 2,
+    "vqc_epochs": 35,
+    "vqc_seeds": [
+      3,
+      11,
+      29
+    ],
+    "learning_rate": 0.05,
+    "expressibility_samples": 24,
+    "expressibility_depths": [
+      1,
+      2,
+      3
+    ]
+  },
+  "versions": {
+    "python": "3.11.0",
+    "numpy": "2.4.6",
+    "scikit_learn": "1.9.1",
+    "qiskit": "2.5.2",
+    "pennylane": "0.45.1",
+    "torch": "2.14.0"
+  },
+  "dataset": {
+    "train_samples": 50,
+    "test_samples": 22,
+    "features": 2
+  },
+  "model_comparison": [
+    {
+      "model": "RBF SVM",
+      "accuracy": 0.9090909090909091,
+      "f1": 0.9
+    },
+    {
+      "model": "Classical MLP",
+      "accuracy": 1.0,
+      "f1": 1.0
+    },
+    {
+      "model": "Qiskit fidelity kernel SVM",
+      "accuracy": 0.8181818181818182,
+      "f1": 0.7777777777777778
+    },
+    {
+      "model": "PennyLane-PyTorch VQC",
+      "accuracy": 0.7727272727272728,
+      "f1": 0.7502088554720133,
+      "accuracy_std": 0.07422696190252057
+    }
+  ],
+  "noise_sweep": [
+    {
+      "noise_strength": 0.0,
+      "shots": 512,
+      "repeats": 3,
+      "accuracy_mean": 0.6363636363636364,
+      "accuracy_std": 0.03711348095126024,
+      "raw_min_eigenvalue_mean": -7.509833696128893e-15,
+      "psd_shift_mean": 1.000007509833696e-09
+    },
+    {
+      "noise_strength": 0.02,
+      "shots": 512,
+      "repeats": 3,
+      "accuracy_mean": 0.6060606060606061,
+      "accuracy_std": 0.021427478217774146,
+      "raw_min_eigenvalue_mean": -7.48292469733763e-15,
+      "psd_shift_mean": 1.0000074829246973e-09
+    },
+    {
+      "noise_strength": 0.05,
+      "shots": 512,
+      "repeats": 3,
+      "accuracy_mean": 0.6363636363636364,
+      "accuracy_std": 0.07422696190252057,
+      "raw_min_eigenvalue_mean": -8.214099518977217e-15,
+      "psd_shift_mean": 1.000008214099519e-09
+    },
+    {
+      "noise_strength": 0.1,
+      "shots": 512,
+      "repeats": 3,
+      "accuracy_mean": 0.6666666666666666,
+      "accuracy_std": 0.02142747821777415,
+      "raw_min_eigenvalue_mean": -8.901603692272787e-15,
+      "psd_shift_mean": 1.0000089016036923e-09
+    }
+  ],
+  "expressibility": [
+    {
+      "depth": 1,
+      "kl_to_haar": 0.20830290488878905,
+      "mean_fidelity": 0.24442809473413715
+    },
+    {
+      "depth": 2,
+      "kl_to_haar": 0.024462148851045085,
+      "mean_fidelity": 0.25676346937241484
+    },
+    {
+      "depth": 3,
+      "kl_to_haar": 0.026764787914228597,
+      "mean_fidelity": 0.2592790521748734
+    }
+  ],
+  "interpretation_notes": [
+    "Reported values are simulator results and do not establish quantum advantage.",
+    "The finite-shot noise sweep is a transparent depolarizing/readout proxy, not a device calibration.",
+    "VQC variability is summarized across explicit random seeds.",
+    "Lower expressibility KL means closer to Haar-random states, not necessarily better generalization."
+  ]
+}

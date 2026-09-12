@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this experiment suite, please cite it using this metadata."
+title: "Quantum ML and Variational Circuit Experiments"
+type: software
+authors:
+  - family-names: "Mathur"
+    given-names: "Sheehan"
+repository-code: "https://github.com/Sheehan007/quantum-ml-variational-circuits"
+license: MIT
+version: 0.1.0
+date-released: 2026-09-12
