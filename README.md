@@ -72,35 +72,6 @@ source .venv/bin/activate
 python -m pip install -e '.[dev]'
 ```
 
-## Run the experiments
-
-```bash
-# Small reproducible run used for the checked-in report
-uv run qml-vqc --profile quick --output-dir results/quick
-
-# Larger seed/sample sweep
-uv run qml-vqc --profile full --output-dir results/full
-
-# Change the root seed or use the convenience targets
-uv run qml-vqc --profile quick --seed 123 --output-dir results/seed-123
-make test
-make lint
-```
-
-Each run writes:
-
-```text
-results/<run>/
-├── summary.json             # configuration, versions, results, caveats
-├── model_comparison.csv     # held-out accuracy and F1
-├── noise_sweep.csv          # repeated finite-shot/noise results
-├── vqc_training.csv         # per-epoch, per-seed diagnostics
-├── expressibility.csv       # depth versus Haar KL divergence
-├── model_comparison.png
-├── noise_robustness.png
-├── vqc_training.png
-└── expressibility.png
-```
 
 ## Experiment design
 
@@ -165,16 +136,6 @@ src/qml_vqc/
 tests/                            # unit and gradient tests
 scripts/run_experiments.py        # source-checkout convenience entry point
 ```
-
-## Reproducibility checklist
-
-- Python 3.11–3.13 is tested in CI.
-- `uv.lock` records the complete resolved environment.
-- Seeds are explicit for dataset generation, sampling, NumPy, and PyTorch.
-- Test data never participates in preprocessing fits or model updates.
-- Raw per-seed/per-epoch measurements remain available; plots are not the only
-  source of results.
-- `summary.json` records configuration and library versions alongside caveats.
 
 ## License
 
